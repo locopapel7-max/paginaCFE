@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reembolso - División Sureste Tapachula</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Sistema de Reembolso - División Sureste Tapachula</h1>
+
+    <button onclick="location.href='/'">Regresar al Inicio</button>
+
+    <div id="formContainer">
+        <h2>Solicitud de Reembolso</h2>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <label>Nombre:</label>
+            <input type="text" name="name" required>
+
+            <label>Correo electrónico:</label>
+            <input type="email" name="email" required>
+
+            <label>Copia del INE:</label>
+            <input type="file" name="ine_file" required>
+
+            <label>Razón del Reembolso:</label>
+            <textarea name="reason" rows="4" required></textarea>
+
+            <label>Monto:</label>
+            <input type="number" name="amount" required>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

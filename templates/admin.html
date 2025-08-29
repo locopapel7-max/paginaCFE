@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Panel Administrador</h1>
+    <h2>Reembolsos</h2>
+    <header style="display: flex; align-items: center; padding: 0px;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="width:100px; position:absolute; top:10px; left:10px;">
+    </header>
+
+
+    <ul>
+        {% for r in reembolsos %}
+            <li>
+                {{ r['name'] }} — {{ r['email'] }} — ${{ r['amount'] }}
+                {% if r['authorized'] == 0 %}
+                    <button type="button" onclick="openPasswordForm({{ r['id'] }})">Autorizar</button>
+                {% else %}
+                    Autorizado
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ url_for('index') }}"><button>Regresar</button></a>
+
+    <!-- Modal contraseña -->
+    <div id="passwordModal" style="display:none; padding:20px; background: rgba(0,0,0,.6); position:fixed; inset:0;">
+        <div style="background:#fff; color:#000; max-width:320px; margin:80px auto; padding:20px; border-radius:10px;">
+            <h3>Ingresar contraseña</h3>
+            <input type="password" id="password" placeholder="Contraseña" style="width:100%; padding:8px;">
+            <div style="margin-top:10px; text-align:right;">
+                <button onclick="checkPassword()">Confirmar</button>
+                <button onclick="closePasswordForm()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <h2>Descargar archivos</h2>
+<button onclick="location.href='/download/usuarios'">Usuarios</button>
+<button onclick="location.href='/download/reembolsos'">Reembolsos</button>
+
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

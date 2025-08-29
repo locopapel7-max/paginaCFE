@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reembolso - División Sureste Tapachula</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Sistema de Reembolso - División Sureste Tapachula</h1>
+    <header style="display: flex; align-items: center; padding: 0px;">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo" style="width:100px; position:absolute; top:10px; left:10px;">
+    </header>
+
+    <button onclick="showUsers()">Usuarios</button>
+    <button onclick="showReembolso()">Reembolso</button>
+    <button onclick="location.href='/admin'">Administrador</button>
+
+    <!-- Botones para escoger tipo de usuario -->
+    <div id="userOptions" style="display:none; margin-top:20px;">
+        <button onclick="showForm('comisionista')">Comisionistas</button>
+        <button onclick="showForm('agentes_comerciales')">Agentes Comerciales</button>
+    </div>
+
+    <!-- Contenedor para el formulario -->
+    <div id="formContainer" style="display:none; margin-top:20px;"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
